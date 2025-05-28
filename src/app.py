@@ -65,7 +65,7 @@ def add_member():
 
     new_members = jackson_family.add_member(new_member_data)
 
-    return jsonify(new_members)
+    return jsonify(new_member_data)
 
 @app.route('/members/<int:id>', methods=['DELETE'])
 def delete_member(id):
@@ -73,7 +73,7 @@ def delete_member(id):
 
     if member:
         jackson_family.delete_member(id)
-        return jsonify({"message": f"Member deleted successfully: {member}"}), 200
+        return jsonify({"message": f"Member deleted successfully: {member}", "done": True}), 200
     else:
         return jsonify({"error": "Member not found"}), 404
 
